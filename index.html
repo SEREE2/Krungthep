@@ -1,23 +1,42 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
+ 
+ <meta name="google-site-verification" content="-LkgtHlPhP3dcs_a59xVUtoiAAmulU3h-9a_ADQ60QE" />
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <title>กรุงเทพซีรีคาร์ แพลตฟอร์มซื้อขายรถยนต์</title>
-  
-  <meta name="description" content="กรุงเทพซีรี่คา - แพลตฟอร์มซื้อขายรถยนต์มือสองที่ดีที่สุด">
-  <meta name="keywords" content="กรุงเทพซีรี่คา, ซื้อขายรถยนต์, รถมือสอง, ตลาดรถ, car market">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:type" content="website">
   <meta property="og:title" content="กรุงเทพซีรีคาร์ - แพลตฟอร์มซื้อขายรถยนต์">
   <meta property="og:description" content="ซื้อขายรถยนต์มือสองง่าย ๆ ราคาดี คัดเกรดคุณภาพ ปลอดภัย 100%">
-  <meta property="og:image" content="https://creecar.pages.dev/images/car.webp">
+  <meta name="description" content="กรุงเทพซีรี่คา - แพลตฟอร์มซื้อขายรถยนต์มือสองที่ดีที่สุด">
+  <meta name="keywords" content="กรุงเทพซีรี่คา, ซื้อขายรถยนต์, รถมือสอง, ตลาดรถ, car market">
+
+  <meta property="og:image" content="https://lh5.googleusercontent.com/d/1fY3KLZZ12AMajvH4xlr9CnwPtusKg9kM">
   <meta property="og:url" content="https://creecar.github.io/Krungthep">
   <link rel="canonical" href="https://creecar.github.io/Krungthep">
   
-  <meta http-equiv="Cache-Control" content="public, max-age=3600">
-  
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+    <!-- เร่งการเชื่อมต่อกับ Apps Script -->
+    <link rel="preconnect" href="https://your-appscrip-url.com">
+    <link rel="dns-prefetch" href="https://your-appscrip-url.com">
+    <meta name="google-site-verification" content="-LkgtHlPhP3dcs_a59xVUtoiAAmulU3h-9a_ADQ60QE" />
+</head>
+<body>
+     <!-- ปรับให้ iframe โหลดเร็วขึ้น -->
+    <style>
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            loading: lazy; /* โหลด iframe แบบ Lazy Load */
+        }
+    </style>
+
+ 
   <style>
     html, body {
       margin: 0;
@@ -38,33 +57,52 @@
       font-weight: bold;
       color: #2d7cff;
     }
-    iframe {
+    #myFrame {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 100vh;
-      border: none;
+      height: 100%;
+      border: 0;
       display: none;
     }
   </style>
-</head>
-<body>
-
+  <!-- แสดงข้อความโหลด -->
   <div id="loading">กำลังเตรียมโหลดแพลตฟอร์ม...</div>
-  <iframe id="myFrame"></iframe>
 
-  <script defer>
+  <!-- iframe -->
+  <iframe id="myFrame" src=""></iframe>
+  
+  <script>
     (function() {
-      let params = new URLSearchParams(window.location.search).get("seree") || "";
+      let link = window.location.href;
+      let link1 = decodeURIComponent(link);
+      let linkParts = link1.split("?");
+      let params = linkParts.length > 1 ? linkParts[1].split("&")[0] : "";
+      let cacheBust = new Date().getTime();
+      let link3 = "https://script.google.com/macros/s/AKfycbx6FZCUPRZxhbyWSLuDCCBQkWS0i9KF3H6Juv3iGxOeL1dBWjNsYbpp_l5VQ9LvmFzM/exec?seree=" 
+                    + params + "&cb=" + cacheBust;
+
+      console.log(link3);
+
       let iframe = document.querySelector("#myFrame");
       let loadingDiv = document.querySelector("#loading");
 
-      let iframeSrc = `https://script.google.com/macros/s/AKfycbx6FZCUPRZxhbyWSLuDCCBQkWS0i9KF3H6Juv3iGxOeL1dBWjNsYbpp_l5VQ9LvmFzM/exec?seree=${params}&cb=${Date.now()}`;
-      
+      // เมื่อ iframe โหลดเสร็จให้ซ่อนข้อความ "กำลังโหลด..."
       iframe.onload = function() {
-        loadingDiv.style.display = "none";
-        iframe.style.display = "block";
+       
+        // setTimeout(function () {
+        //   loadingDiv.style.display = "none";
+        // }, 1500);
+       
+          loadingDiv.style.display = "none";
+          iframe.style.display = "block";
       };
 
-      iframe.src = iframeSrc;
+      // ตั้งค่า URL ให้ iframe โหลด
+      if (!link.includes("sereecar.github.io/index.html")) {
+          iframe.setAttribute("src", link3);
+      }
     })();
   </script>
 
